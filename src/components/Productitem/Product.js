@@ -3,7 +3,7 @@ import ReactStars from 'react-rating-stars-component';
 import {Link} from 'react-router-dom';
 import "./product.css";
 
-const nProduct = ({product}) => {
+const Product = ({product}) => {
 
   const options={
     edit:false,
