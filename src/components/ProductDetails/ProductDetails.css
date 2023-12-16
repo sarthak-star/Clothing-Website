@@ -1,0 +1,12 @@
+.productpage{
+    max-width: 100vw;
+    height: 100vh;
+    display: flex;
+    
+}
+.productpage_left{
+    max-width: 50%;
+}
+.productpage_right{
+    max-width: 50%;
+}

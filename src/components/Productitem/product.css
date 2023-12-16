@@ -1,0 +1,15 @@
+.productCard{
+    
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    width: fit-content;
+    padding: 1%;
+    font-size: 1.3rem;
+}
+.productCard > img{
+    width: 25rem ;
+    height: auto;
+}
