@@ -6,6 +6,7 @@ import Homepage from './components/Homepage/Homepage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductDetails from './components/ProductDetails/ProductDetails';
+import Loader from './components/Loader/Loader';
 
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
       <Routes>
         <Route exact path='/' Component={Homepage} />
         <Route exact path='/product/:id' Component={ProductDetails} />
+        
+
 
 
       </Routes>

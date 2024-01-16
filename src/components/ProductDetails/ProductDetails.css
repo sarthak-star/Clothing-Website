@@ -2,11 +2,49 @@
     max-width: 100vw;
     height: 100vh;
     display: flex;
-    
+    padding: 4%;
 }
 .productpage_left{
-    max-width: 50%;
+    width: 50%;
+    border: 2px solid red;
 }
 .productpage_right{
-    max-width: 50%;
+    width: 50%;
+    border: 2px solid red;
+    padding: 3%;
+    font-size: 28px;
+}
+
+.productpage_right > h4{
+    color: gray;
+    font-size: 20px;
+}
+
+#price{
+    font-weight: 900;
+}
+
+.ratings{
+    display: flex;
+    
+    gap: 15px;
+    font-size: 25px;
+}
+
+.quantity{
+    display: flex;
+    border: 2px solid red;
+    padding: 2%;
+    
+}
+
+
+
+.redcolor{
+    color: red;
+
+}
+
+.greencolor{
+    color: green;
 }
