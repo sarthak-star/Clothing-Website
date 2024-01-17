@@ -70,7 +70,7 @@
 
 #featuredProducts_content{
     width: 100%;
-    border: 2px solid red;
+    
     display: flex;
     flex-wrap: wrap;
     align-items: center;

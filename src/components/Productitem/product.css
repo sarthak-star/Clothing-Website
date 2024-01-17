@@ -8,8 +8,10 @@
     width: fit-content;
     padding: 1%;
     font-size: 1.3rem;
-    border: 2px solid red;
+    
     margin: 1%;
+    text-decoration: none;
+    color: black;
 }
 .productCard > img{
     width: 25rem ;

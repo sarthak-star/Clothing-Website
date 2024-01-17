@@ -6,7 +6,8 @@ import Homepage from './components/Homepage/Homepage';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductDetails from './components/ProductDetails/ProductDetails';
-import Loader from './components/Loader/Loader';
+import Productspage from "./components/Productspage/Productspage";
+import Search from './components/Search/Search';
 
 
 function App() {
@@ -16,7 +17,9 @@ function App() {
       <Routes>
         <Route exact path='/' Component={Homepage} />
         <Route exact path='/product/:id' Component={ProductDetails} />
-        
+        <Route exact path='/products' Component={Productspage} />
+        <Route exact path="/search" Component={Search} />
+        <Route path="/products/:keyword" component={Productspage} />
 
 
 

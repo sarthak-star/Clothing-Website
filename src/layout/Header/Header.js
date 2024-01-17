@@ -29,7 +29,7 @@ const Header = () => {
         <div className="overlay-content">
           <img src={logo} width={350}/>
           <a href="#">About</a>
-          <a href="#">Services</a>
+          <a href="/products">Products</a>
           <a href="#">Clients</a>
           <a href="#">Contact</a>
         </div>

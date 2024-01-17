@@ -9,6 +9,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ReactStars from 'react-rating-stars-component';
 import Loader from "../Loader/Loader";
+import ReviewCard from "./Reviewcard";
+
 
 const ProductDetails = () => {
     const params = useParams();
@@ -53,8 +55,21 @@ const ProductDetails = () => {
         isHalf: true
 
     }
+    const increaseQuantity = () => {
+        if (product.Stock <= quantity) return;
 
-    const [orderqty, setorderqty] = useState(1);
+        const qty = quantity + 1;
+        setQuantity(qty);
+    };
+
+    const decreaseQuantity = () => {
+        if (1 >= quantity) return;
+
+        const qty = quantity - 1;
+        setQuantity(qty);
+    }
+
+    const [quantity, setQuantity] = useState(1);
 
     return (
         <>
@@ -62,6 +77,7 @@ const ProductDetails = () => {
                 <Loader />
             ) : (
                 <div className="productpage">
+                    <div className="productpage_top">
                     <div className="productpage_left">
                         <Slider {...settings}>
                             <div>
@@ -73,7 +89,7 @@ const ProductDetails = () => {
                             <div>
                                 <h3>3</h3>
                             </div>
-                            
+
                         </Slider>
                     </div>
                     <div className="productpage_right">
@@ -88,9 +104,9 @@ const ProductDetails = () => {
                                     <span>({product.numofReviews} Reviews)</span>
                                 </div>
                                 <div className="quantity">
-                                    <button>-</button>
-                                    <input type="Number" value={orderqty} />
-                                    <button>+</button>
+                                    <button onClick={decreaseQuantity} >-</button>
+                                    <input type="Number" value={quantity} />
+                                    <button onClick={increaseQuantity} >+</button>
                                     <button>Add To Cart</button>
                                 </div>
 
@@ -104,6 +120,23 @@ const ProductDetails = () => {
                                 <button className="Submitreview" >Submit Review</button>
                             </>
                         }
+                    </div>
+                    </div>
+                    <div className="productpage_bottom">
+                        <h2>REVIEWS</h2>
+
+                        {product?.Reviews && product?.Reviews[0] ? (
+                            <div className="reviews">
+                                {product?.Reviews &&
+                                    product?.Reviews.map((review) => (
+                                        <ReviewCard key={review._id} review={review} />
+                                    ))}
+                            </div>
+                        ) : (
+                            <p className="noReviews">No Reviews Yet</p>
+                        )}
+
+
                     </div>
                 </div>
             )}
