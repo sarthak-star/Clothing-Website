@@ -33,12 +33,17 @@ import {
 
 
 // Get all products
-export const GetProducts = () => async (dispatch) => {
+export const GetProducts = (keyword = "" , currentpage = 1  , category) => async (dispatch) => {
     try {
 
         dispatch({ type: ALL_PRODUCT_REQUEST });
+        let link = `/api/v1/products?keyword=${keyword}&page=${currentpage}`;
 
-        const { data } = await axios.get("/api/v1/products");
+        if(category){
+            link = `/api/v1/products?keyword=${keyword}&page=${currentpage}&category=${category}`;
+        }
+
+        const { data } = await axios.get(link);
 
 
         dispatch({
@@ -49,7 +54,7 @@ export const GetProducts = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: ALL_PRODUCT_FAIL,
-            payload: error.message,
+            payload: error,
         })
     }
 }

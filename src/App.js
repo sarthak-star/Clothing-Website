@@ -19,7 +19,7 @@ function App() {
         <Route exact path='/product/:id' Component={ProductDetails} />
         <Route exact path='/products' Component={Productspage} />
         <Route exact path="/search" Component={Search} />
-        <Route path="/products/:keyword" component={Productspage} />
+        <Route path="/products/:keyword" Component={Productspage} />
 
 
 
