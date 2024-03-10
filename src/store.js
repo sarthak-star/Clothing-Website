@@ -1,12 +1,28 @@
 import thunk from 'redux-thunk';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import {productdetailsreducer, productsreducer} from "./reducers/productreducer";
+import {
+  allUsersReducer,
+  forgotPasswordReducer,
+  profileReducer,
+  userDetailsReducer,
+  userReducer,
+} from "./reducers/userreducer";
+import {
+  newProductReducer,
+  newReviewReducer,
+  productdetailsreducer,
+  productsreducer,
+  productReviewsReducer,
+  productsReducer,
+  reviewReducer,
+} from "./reducers/productreducer";
 
 
 
 let rootReducer = combineReducers({
     products:productsreducer,
-    productdetails:productdetailsreducer
+    productdetails:productdetailsreducer,
+    user:userReducer
 
 });
 

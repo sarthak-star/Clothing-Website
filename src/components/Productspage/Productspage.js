@@ -17,7 +17,7 @@ const categories = [
     "Tops",
     "Attire",
     "Camera",
-    "SmartPhones",
+    "Samples",
 ];
 
 const Productspage = () => {
@@ -86,6 +86,7 @@ const Productspage = () => {
                                 </div>
                             </InfiniteScroll>
                         </div>
+                        
                     </>
                 )
             }
