@@ -16,17 +16,28 @@ import {
   productsReducer,
   reviewReducer,
 } from "./reducers/productreducer";
+import { cartReducer } from "./reducers/cartreducer";
 
 
 
 let rootReducer = combineReducers({
     products:productsreducer,
     productdetails:productdetailsreducer,
-    user:userReducer
+    user:userReducer,
+    cart: cartReducer
 
 });
 
-const initialState = {}; // Your initial state goes here
+let initialState = {
+  cart: {
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+    shippingInfo: localStorage.getItem("shippingInfo")
+      ? JSON.parse(localStorage.getItem("shippingInfo"))
+      : {},
+  },
+}; // Your initial state goes here
 
 const middleware = [thunk]; // Your middleware array
 

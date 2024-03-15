@@ -4,17 +4,19 @@ import "./ProductDetails.css";
 import { GetProductsDetails } from "../../actions/productactions";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
-import { toast } from "react-toastify";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ReactStars from 'react-rating-stars-component';
 import Loader from "../Loader/Loader";
 import ReviewCard from "./Reviewcard";
+import { addItemsToCart } from "../../actions/cartactions";
+import { useAlert } from 'react-alert'
+
 
 
 const ProductDetails = () => {
     const params = useParams();
-
+    const alert = useAlert();
 
     const dispatch = useDispatch();
 
@@ -26,7 +28,7 @@ const ProductDetails = () => {
     useEffect(() => {
 
         if (error) {
-            toast(error);
+            alert.show(error);
         }
 
 
@@ -68,8 +70,15 @@ const ProductDetails = () => {
         const qty = quantity - 1;
         setQuantity(qty);
     }
+    const addToCartHandler = () => {
+        dispatch(addItemsToCart(params.id, quantity));
+        alert.show("Item Added To Cart");
+    };
 
     const [quantity, setQuantity] = useState(1);
+    const [open, setOpen] = useState(false);
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState("");
 
     return (
         <>
@@ -78,49 +87,50 @@ const ProductDetails = () => {
             ) : (
                 <div className="productpage">
                     <div className="productpage_top">
-                    <div className="productpage_left">
-                        <Slider {...settings}>
-                            <div>
-                                <h3>1</h3>
-                            </div>
-                            <div>
-                                <h3>2</h3>
-                            </div>
-                            <div>
-                                <h3>3</h3>
-                            </div>
-
-                        </Slider>
-                    </div>
-                    <div className="productpage_right">
-                        {product &&
-                            <>
-                                <h4>Product #{product._id}</h4>
-                                <h1>{product.name}</h1>
-                                <p>{product.description}</p>
-                                <p id="price" >₹{product.price}</p>
-                                <div className="ratings" >
-                                    <ReactStars {...options} />{ }
-                                    <span>({product.numofReviews} Reviews)</span>
+                        <div className="productpage_left">
+                            <Slider {...settings}>
+                                <div>
+                                    <h3>1</h3>
                                 </div>
-                                <div className="quantity">
-                                    <button onClick={decreaseQuantity} >-</button>
-                                    <input type="Number" value={quantity} />
-                                    <button onClick={increaseQuantity} >+</button>
-                                    <button>Add To Cart</button>
+                                <div>
+                                    <h3>2</h3>
+                                </div>
+                                <div>
+                                    <h3>3</h3>
                                 </div>
 
-                                <p>
-                                    <b className={product.Stock < 1 ? "redcolor" : "greencolor"} >
-                                        {product.Stock < 1 ? "Out of Stock" : "In Stock"}
+                            </Slider>
+                        </div>
+                        <div className="productpage_right">
+                            {product &&
+                                <>
+                                    <h4>Product #{product._id}</h4>
+                                    <h1>{product.name}</h1>
+                                    <p>{product.description}</p>
+                                    <p id="price" >₹{product.price}</p>
+                                    <div className="ratings" >
+                                        <ReactStars {...options} />{ }
+                                        <span>({product.numofReviews} Reviews)</span>
+                                    </div>
+                                    <div className="quantity">
+                                        <button onClick={decreaseQuantity} >-</button>
+                                        <input type="Number" value={quantity} />
+                                        <button onClick={increaseQuantity} >+</button>
+                                        <button disabled={product.Stock < 1 ? true : false}
+                                            onClick={addToCartHandler}>Add To Cart</button>
+                                    </div>
 
-                                    </b>
-                                </p>
+                                    <p>
+                                        <b className={product.Stock < 1 ? "redcolor" : "greencolor"} >
+                                            {product.Stock < 1 ? "Out of Stock" : "In Stock"}
 
-                                <button className="Submitreview" >Submit Review</button>
-                            </>
-                        }
-                    </div>
+                                        </b>
+                                    </p>
+
+                                    <button className="Submitreview" >Submit Review</button>
+                                </>
+                            }
+                        </div>
                     </div>
                     <div className="productpage_bottom">
                         <h2>REVIEWS</h2>
