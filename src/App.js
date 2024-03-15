@@ -70,13 +70,12 @@ function App() {
 
         <Route exact path="/cart" element={<Cart/>} />
 
-        <Route exact path="/shipping" element={<ProtectedRoute element={<Shipping/>} />} />
-
-        <Route exact path="/success" element={<ProtectedRoute element={<OrderSuccess/>} />} />
-        <Route exact path="/orders" element={<ProtectedRoute element={<MyOrders/>} />} />
-        <Route exact path="/ordir/confirm" element={<ProtectedRoute element={<ConfirmOrder/>} />} />
-        <Route exact path="/ordir/:id" element={<ProtectedRoute element={<OrderDetails/>} />} />
-        <Route exact path="/account" element={<ProtectedRoute element={<Profile/>} />} />
+        <Route exact path="/shipping" element={<Shipping/>}/>
+        <Route exact path="/success" element={<OrderSuccess/>}/>
+        <Route exact path="/orders" element={<MyOrders/>}/>
+        <Route exact path="/order/confirm" element={<ConfirmOrder/>}/>
+        <Route exact path="/order/:id" element={<OrderDetails/>}/>
+        <Route exact path="/account" element={<Profile/>}/>
 
         
 
